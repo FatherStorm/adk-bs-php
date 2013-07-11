@@ -55,7 +55,7 @@ class ADK_SOAP_API
         $error = "Error Selecting Campaign {$this->ADK_CONFIG['CAMPAIGN_ID']} ";
         $node = 'Campaign';
         try {
-            $returnVal = $this->campaignService->GetCampaign($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
+            $returnVal = $this->adkBidsystemService->GetCampaign($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -70,7 +70,7 @@ class ADK_SOAP_API
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->campaignService->GetCampaignList($this->ADK_CONFIG['ADVERTISER_ID']);
+            $returnVal = $this->adkBidsystemService->GetCampaignList($this->ADK_CONFIG['ADVERTISER_ID']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -85,7 +85,7 @@ class ADK_SOAP_API
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->campaignService->GetActiveCampaignList($this->ADK_CONFIG['ADVERTISER_ID']);
+            $returnVal = $this->adkBidsystemService->GetActiveCampaignList($this->ADK_CONFIG['ADVERTISER_ID']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -116,7 +116,7 @@ class ADK_SOAP_API
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->campaignService->GetCampaignStats($this->ADK_CONFIG['ADVERTISER_ID'], (array) $this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['START_DATE'], $this->ADK_CONFIG['END_DATE']);
+            $returnVal = $this->adkBidsystemService->GetCampaignStats($this->ADK_CONFIG['ADVERTISER_ID'], (array) $this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['START_DATE'], $this->ADK_CONFIG['END_DATE']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -147,14 +147,14 @@ class ADK_SOAP_API
         # There is currently a bug in the SOAP layer that expects that this will ALWAYS be an array of more than one campaigns.
         # but the service DOES de-dup the campaigns sent in so we will just dup the campaign_id if there is just one
         ########################################################################################################################
-        if(count((array)$this->ADK_CONFIG['CAMPAIGN_ID'])==1){
-            $this->ADK_CONFIG['CAMPAIGN_ID']=array($this->ADK_CONFIG['CAMPAIGN_ID'],$this->ADK_CONFIG['CAMPAIGN_ID']);
+        if (count((array) $this->ADK_CONFIG['CAMPAIGN_ID']) == 1) {
+            $this->ADK_CONFIG['CAMPAIGN_ID'] = array($this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
         }
         $error = "Error Selecting Campaigns Bid Cost List " . implode(",", (array) $this->ADK_CONFIG['CAMPAIGN_ID']);
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->campaignService->GetCampaignBidCostList($this->ADK_CONFIG['ADVERTISER_ID'], (array) $this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['START_DATE'], $this->ADK_CONFIG['END_DATE']);
+            $returnVal = $this->adkBidsystemService->GetCampaignBidCostList($this->ADK_CONFIG['ADVERTISER_ID'], (array) $this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['START_DATE'], $this->ADK_CONFIG['END_DATE']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -171,7 +171,7 @@ class ADK_SOAP_API
         $node = false;
         $shiftNode = 'return';
         try {
-            $returnVal = $this->campaignService->SetCampaignPaused($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
+            $returnVal = $this->adkBidsystemService->SetCampaignPaused($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -187,7 +187,7 @@ class ADK_SOAP_API
         $node = false;
         $shiftNode = 'return';
         try {
-            $returnVal = $this->campaignService->SetCampaignActive($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
+            $returnVal = $this->adkBidsystemService->SetCampaignActive($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -214,14 +214,63 @@ class ADK_SOAP_API
         }
     }
 
-
     public function getFunctions()
     {
-        $connection = $this->connect();
-        if ($connection['status'] != 'success') {
-            $return(connection);
+        $this->_availableFunctions = array('implementedFunctions'=>array(),'unimplementedFunctions'=>array());
+        foreach ($this->_availableServices as $service) {
+            $this->_availableFunctions[$service] = array('status' => '', 'Functions' => array());
+            $connection = $this->connect($service);
+            echo"<pre>";
+            print_r($connection);
+            if ($connection['status'] != 'success') {
+                $this->_availableFunctions[$service]['status'] = 'unavailable';
+            } else {
+                $this->_availableFunctions[$service]['status'] = 'available';
+                $functionList = json_decode(json_encode($this->adkBidsystemService->__getFunctions()),true);
+
+                foreach ($functionList as $fn) {
+                    list($returnType, $functionCall) = explode(" ", trim($fn), 2);
+                    list($functionName, $args) = explode("(", str_replace(")", "", $functionCall), 2);
+                    $pseudoName = strtolower(substr($functionName,0,1)).substr($functionName,1);
+                    $args = explode(",", $args);
+                    $parameters=array();
+                    foreach ($args as $arg) {
+                       $arg=trim($arg);
+                        list($argType, $arg) = explode(" ", $arg, 2);
+                        $parameters[$arg] = array('parameterType' => $argType, 'parameterName' => $arg);
+                    }
+                    if( method_exists($this, $pseudoName)){
+                       $available='Yes';
+                       $this->_availableFunctions['implementedFunctions'][$pseudoName]=array(
+                           'remoteName'=>$functionName
+                           , 'localName'=>$pseudoName
+                           ,'parameters'=>$parameters
+                           ,'returnType'=>$returnType);
+                    }else{
+                        $available='No';
+                        $this->_availableFunctions['unimplementedFunctions'][$pseudoName]=array(
+                           'remoteName'=>$functionName
+                           , 'localName'=>$pseudoName.' [PENDING IMPLEMENTATION]'
+                           ,'parameters'=>$parameters
+                           ,'returnType'=>$returnType);
+                    }
+                    $this->_availableFunctions[$service]['Functions'][$functionName] = array(
+                        'SOAP_API' => $functionName
+                        , 'adk-bs.class' => $pseudoName
+                        , 'available' => $available
+                        , 'returnType' => $returnType
+                        , 'functionCall' =>  strtolower(substr($functionCall,0,1)).substr($functionCall,1)
+                        , 'parameters' => $parameters
+                    );
+
+
+                }
+            }
+
         }
-        return(array('status' => 'success', 'functions' => var_export($this->campaignService->__getFunctions())));
+        ksort($this->_availableFunctions['implementedFunctions']);
+        ksort($this->_availableFunctions['unimplementedFunctions']);
+        return(array('status' => 'success', 'Services' => $this->_availableFunctions));
     }
 
     public function __destruct()
@@ -258,18 +307,19 @@ class ADK_SOAP_API
     private function connect($service = 'Campaign')
     {
         if (isset($this->_services[$service])) {
-            $this->campaignService = $this->_services[$service];
-            return;
+            $this->adkBidsystemService = $this->_services[$service];
+            return array('status' => 'success', 'type' => 'cached');
         }
         $this->push('SERVICE', $service, 'STRING');
         try {
-            $this->campaignService = false;
+            $this->adkBidsystemService = false;
             $this->loginObject = new Soapheader(sprintf($this->ADK_CONFIG['NAMESPACE'], $this->ADK_CONFIG['SERVICE']), 'LoginObject', new LoginObject($this->ADK_CONFIG));
 
             $this->_services[$service] = new SoapClient(sprintf($this->ADK_CONFIG['WSDL'], $this->ADK_CONFIG['SERVICE']));
             $this->_services[$service]->__setSoapHeaders(array($this->loginObject));
 
-            $this->campaignService = $this->_services[$service];
+            $this->adkBidsystemService = $this->_services[$service];
+            return array('status' => 'success', 'type' => 'new');
         } catch (Exception $e) {
             $this->status = array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
             exit;

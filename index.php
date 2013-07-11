@@ -2,6 +2,14 @@
 
 require ('adk-bs.class.php');
 
+function dump($status)
+{
+    echo json_encode($status);
+    echo"<pre>";
+    print_r($status);
+    echo"</pre>";
+    echo"<hr>";
+}
 
 /*
  * ADK Example class and code for using SOAP interface from PHP code
@@ -37,7 +45,13 @@ $adk_soap_api->setPassword('08BC5F9AA19371862B489840B39EB2D1');
 //Set a Advertiser ID and Campaign ID at runtime and turn a campaign On
 $adk_soap_api->setAdvertiserID('378707');
 $adk_soap_api->setCampaignID('888994');
-echo"<pre>";
+
+
+
+/*
+ * Get Everything available as a meta-getter
+ */
+dump($adk_soap_api->getFunctions());
 
 
 /*
@@ -66,10 +80,7 @@ echo"<pre>";
  */
 
 
-$status = $adk_soap_api->getCampaign();
-echo"<br/>";
-echo json_encode($status);
-
+dump($adk_soap_api->getCampaign());
 /*
  * getCampaignStats($advertiser_id,$campaign_id,$start_date,$end_date);
  * (int)$advertiser_id defaults to config
@@ -77,9 +88,7 @@ echo json_encode($status);
  * (date)$start_date defaults to 1 month ago
  * (date)$end_date defaults to latest available
  */
-$status = $adk_soap_api->getCampaignStats();
-echo"<br/>";
-echo json_encode($status);
+dump($adk_soap_api->getCampaignStats());
 
 /*
  * getCampaignBidCostList($advertiser_id,$campaign_id,$start_date,$end_date);
@@ -88,45 +97,35 @@ echo json_encode($status);
  * (date)$start_date defaults to 1 month ago
  * (date)$end_date defaults to latest available
  */
-$status = $adk_soap_api->getCampaignBidCostList();
-echo"<br/>";
-echo json_encode($status);
+dump($adk_soap_api->getCampaignBidCostList());
 
 /*
  * getCampaignList($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-$status = $adk_soap_api->getCampaignList();
-echo"<br/>";
-echo json_encode($status);
+dump($adk_soap_api->getCampaignList());
 
 /*
  * getActiveCampaignList($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-$status = $adk_soap_api->getActiveCampaignList();
-echo"<br/>";
-echo json_encode($status);
+dump($adk_soap_api->getActiveCampaignList());
 
 /*
  * setCampaignActive($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-$status = $adk_soap_api->setCampaignActive();
-echo"<br/>";
-echo json_encode($status);
+dump($adk_soap_api->setCampaignActive());
 
 /*
  * setCampaignPaused($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-$status = $adk_soap_api->setCampaignPaused();
-echo"<br/>";
-echo json_encode($status);
+dump($adk_soap_api->setCampaignPaused());
 
 
 
