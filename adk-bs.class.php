@@ -220,8 +220,6 @@ class ADK_SOAP_API
         foreach ($this->_availableServices as $service) {
             $this->_availableFunctions[$service] = array('status' => '', 'Functions' => array());
             $connection = $this->connect($service);
-            echo"<pre>";
-            print_r($connection);
             if ($connection['status'] != 'success') {
                 $this->_availableFunctions[$service]['status'] = 'unavailable';
             } else {
