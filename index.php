@@ -21,13 +21,13 @@ function dump($status)
 
 
 $ADK_CONFIG = array(
-    'NAMESPACE' => 'https://api.bidsystem.com/2011-10-01/%s.svc'            //This Parameter may change and is not required and defaults as shown. It cannot be changed after the class is initialized
-    , 'WSDL' => 'https://api.bidsystem.com/2011-10-01/%s.wsdl'              //This Parameter may change and is not required and defaults as shown. It cannot be changed after the class is initialized
-    , 'SERVICE' => 'Campaign'                                               //This Parameter changes depending on the service called
-    , 'API_KEY' => ''                                                       //This parameter is required but can be set using setAPIKey()
-    , 'PASSWORD' => ''                                                      //This parameter is required but can be set using setPassword();
-    , 'ADVERTISER_ID' => ''                                                 //This parameter is required but can be set after the class is initiated using setAdvertiserID();
-    , 'CAMPAIGN_ID' => ''                                                   //This parameter is required can be passed at call time or initiated using setCampaignID();
+    'namespace' => 'https://api.bidsystem.com/2011-10-01/%s.svc'            //This Parameter may change and is not required and defaults as shown. It cannot be changed after the class is initialized
+    , 'wsdl' => 'https://api.bidsystem.com/2011-10-01/%s.wsdl'              //This Parameter may change and is not required and defaults as shown. It cannot be changed after the class is initialized
+    , 'service' => 'Campaign'                                               //This Parameter changes depending on the service called
+    , 'api_key' => 'ADKNOWLEDGE'                                                       //This parameter is required but can be set using setAPIKey()
+    , 'password' => '08BC5F9AA19371862B489840B39EB2D1'                                                      //This parameter is required but can be set using setPassword();
+    , 'advertiser_id' => ''                                                 //This parameter is required but can be set after the class is initiated using setAdvertiserID();
+    , 'campaign_id' => ''                                                   //This parameter is required can be passed at call time or initiated using setCampaignID();
 );
 
 
@@ -47,11 +47,6 @@ $adk_soap_api->setAdvertiserID('378707');
 $adk_soap_api->setCampaignID('888994');
 
 
-
-/*
- * Get Everything available as a meta-getter
- */
-dump($adk_soap_api->getFunctions());
 
 
 /*
@@ -79,8 +74,20 @@ dump($adk_soap_api->getFunctions());
   }
  */
 
+/*
+ * getAdGroupsByCampaign($advertiser_id,$campaign_id);
+ * (int)$advertiser_id defaultsto config
+ * (array)$campaign_id defaults to config
+ */
+dump($adk_soap_api->getAdGroupsByCampaign());
 
-dump($adk_soap_api->getCampaign());
+/*
+ * getActiveAdGroupsByCampaign($advertiser_id,$campaign_id);
+ * (int)$advertiser_id defaultsto config
+ * (array)$campaign_id defaults to config
+ */
+dump($adk_soap_api->getActiveAdGroupsByCampaign());
+
 /*
  * getCampaignStats($advertiser_id,$campaign_id,$start_date,$end_date);
  * (int)$advertiser_id defaults to config
@@ -98,7 +105,7 @@ dump($adk_soap_api->getCampaignStats());
  * (date)$end_date defaults to latest available
  */
 dump($adk_soap_api->getCampaignBidCostList());
-
+die();
 /*
  * getCampaignList($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
@@ -128,6 +135,15 @@ dump($adk_soap_api->setCampaignActive());
 dump($adk_soap_api->setCampaignPaused());
 
 
+
+
+/*
+ * Get Everything! This gets all possible available unctions from the SOAP service and checks to see if they have been implemented locally.
+ * I'll have to see by the time I get done iterating over all the functions to see if there are any namespace head-bumping issues,
+ * in which case all the function calls will end up changing to be prefixed with the service name.
+ * I'm hoping to avoid this the make the class a bit flatter and easier to remember the calls.
+ */
+dump($adk_soap_api->getFunctions());
 
 //
 ///*

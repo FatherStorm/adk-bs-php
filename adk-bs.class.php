@@ -7,13 +7,16 @@
 class LoginObject
 {
 
-    public $API_KEY = '';   //Optional usually filled at runtime from the passed array
-    public $PASSWORD = '';  //Optional usually filled at runtime from the passed array
+    public $api_key = '';   //Optional usually filled at runtime from the passed array
+    public $password = '';  //Optional usually filled at runtime from the passed array
 
     public function __construct($params)
     {
-        $this->API_KEY = isset($params['API_KEY']) && trim($params['API_KEY']) ? $params['API_KEY'] : $this->API_KEY;
-        $this->PASSWORD = isset($params['PASSWORD']) && trim($params['PASSWORD']) ? $params['PASSWORD'] : $this->PASSWORD;
+        /*
+         * NOTE: These two items are capitalized on purpose due to the SOAP connection layer requirements.
+         */
+        $this->API_KEY = isset($params['api_key']) && trim($params['api_key']) ? $params['api_key'] : $this->api_key;
+        $this->PASSWORD = isset($params['password']) && trim($params['password']) ? $params['password'] : $this->password;
     }
 
 }
@@ -36,26 +39,82 @@ class ADK_SOAP_API
 
     public function __construct($ADK_CONFIG)
     {
-        $this->ADK_CONFIG = $ADK_CONFIG;
-        $this->ADK_CONFIG['NAMESPACE'] = isset($this->ADK_CONFIG['NAMESPACE']) && trim($this->ADK_CONFIG['NAMESPACE']) ?
-                $this->ADK_CONFIG['NAMESPACE'] :
+        /*
+         * Build up a flexObject that contains everything we need and do. we can reuse parts of this object at will, shove it around by reference, do whatever.
+         * This is some seriously bad frankencode but makes for fast development...
+         * Rewrite may come at some point.
+         */
+        $this->flexOBJECT = $ADK_CONFIG;
+        $this->flexOBJECT['namespace'] = isset($this->flexOBJECT['namespace']) && trim($this->flexOBJECT['namespace']) ?
+                $this->flexOBJECT['namespace'] :
                 'https://api.bidsystem.com/2011-10-01/%s.svc';
 
-        $this->ADK_CONFIG['WSDL'] = isset($this->ADK_CONFIG['WSDL']) && trim($this->ADK_CONFIG['WSDL']) ?
-                $this->ADK_CONFIG['WSDL'] :
+        $this->flexOBJECT['wsdl'] = isset($this->flexOBJECT['wsdl']) && trim($this->flexOBJECT['wsdl']) ?
+                $this->flexOBJECT['wsdl'] :
                 'https://api.bidsystem.com/2011-10-01/%s.wsdl';
+
+
+
     }
 
     //Getters
+    public function getAdGroup($advertiser_id = false, $ad_group_id = false)
+    {
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('ad_group_id', $ad_group_id, 'INT');
+        $connection = $this->connect('AdGroup');
+        $error = "Error Selecting Campaign {$this->flexOBJECT['campaign_id']} ";
+        $node = 'AdGroup';
+        $shiftNode=false;
+        try {
+            $returnVal = $this->adkBidsystemService->GetAdGroup($this->flexOBJECT['advertiser_id'], $this->flexOBJECT['ad_group_id']);
+            return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
+        } catch (Exception $e) {
+            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
+        }
+    }
+
+    public function getAdGroupsByCampaign($advertiser_id = false, $campaign_id = false)
+    {
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('campaign_id', $campaign_id, 'ARRAY');
+        $connection = $this->connect('AdGroup');
+        $error = "Error Selecting Ad Groups for Campaign {$this->flexOBJECT['campaign_id']} ";
+        $node = 'AdGroups';
+        $pseudoNode=false;
+        try {
+            $returnVal = $this->adkBidsystemService->GetAdGroupsByCampaign($this->flexOBJECT['advertiser_id'], (array)$this->flexOBJECT['campaign_id']);
+            return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
+        } catch (Exception $e) {
+            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage().var_export( $this->flexOBJECT));
+        }
+    }
+    public function getActiveAdGroupsByCampaign($advertiser_id = false, $campaign_id = false)
+    {
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('campaign_id', $campaign_id, 'ARRAY');
+        $connection = $this->connect('AdGroup');
+        $error = "Error Selecting Ad Groups for Campaign {$this->flexOBJECT['campaign_id']} ";
+        $node = 'AdGroups';
+        $pseudoNode=false;
+        try {
+            $returnVal = $this->adkBidsystemService->GetActiveAdGroupsByCampaign($this->flexOBJECT['advertiser_id'], (array)$this->flexOBJECT['campaign_id']);
+            return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
+        } catch (Exception $e) {
+            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage().var_export( $this->flexOBJECT));
+        }
+    }
+
     public function getCampaign($advertiser_id = false, $campaign_id = false)
     {
-        $this->push('ADVERTISER_ID', $advertiser_id, 'INT');
-        $this->push('CAMPAIGN_ID', $campaign_id, 'INT');
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('campaign_id', $campaign_id, 'INT');
         $connection = $this->connect('Campaign');
-        $error = "Error Selecting Campaign {$this->ADK_CONFIG['CAMPAIGN_ID']} ";
+        $error = "Error Selecting Campaign {$this->flexOBJECT['campaign_id']} ";
         $node = 'Campaign';
+        $pseudoNode=false;
         try {
-            $returnVal = $this->adkBidsystemService->GetCampaign($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
+            $returnVal = $this->adkBidsystemService->GetCampaign($this->flexOBJECT['advertiser_id'], $this->flexOBJECT['campaign_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -64,13 +123,13 @@ class ADK_SOAP_API
 
     public function getCampaignList($advertiser_id = false)
     {
-        $this->push('ADVERTISER_ID', $advertiser_id, 'INT');
+        $this->push('advertiser_id', $advertiser_id, 'INT');
         $connection = $this->connect('Campaign');
-        $error = "Error Selecting Advertiser Campaigns {$this->ADK_CONFIG['CAMPAIGN_ID']} ";
+        $error = "Error Selecting Advertiser Campaigns {$this->flexOBJECT['campaign_id']} ";
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->adkBidsystemService->GetCampaignList($this->ADK_CONFIG['ADVERTISER_ID']);
+            $returnVal = $this->adkBidsystemService->GetCampaignList($this->flexOBJECT['advertiser_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -79,13 +138,13 @@ class ADK_SOAP_API
 
     public function getActiveCampaignList($advertiser_id = false)
     {
-        $this->push('ADVERTISER_ID', $advertiser_id, 'INT');
+        $this->push('advertiser_id', $advertiser_id, 'INT');
         $connection = $this->connect('Campaign');
-        $error = "Error Selecting Active Advertiser Campaigns {$this->ADK_CONFIG['CAMPAIGN_ID']} ";
+        $error = "Error Selecting Active Advertiser Campaigns {$this->flexOBJECT['campaign_id']} ";
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->adkBidsystemService->GetActiveCampaignList($this->ADK_CONFIG['ADVERTISER_ID']);
+            $returnVal = $this->adkBidsystemService->GetActiveCampaignList($this->flexOBJECT['advertiser_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -94,8 +153,8 @@ class ADK_SOAP_API
 
     public function getCampaignStats($advertiser_id = false, $campaign_id = false, $start_date = false, $end_date = false)
     {
-        $this->push('ADVERTISER_ID', $advertiser_id, 'INT');
-        $this->push('CAMPAIGN_ID', $campaign_id, 'ARRAY');
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('campaign_id', $campaign_id, 'ARRAY');
 
 
         if (!$start_date) {
@@ -108,15 +167,15 @@ class ADK_SOAP_API
         } else {
             $end_date = date("Y-m-d h:i:s", strtotime($end_date));
         }
-        $this->push('START_DATE', $start_date, 'STR');
-        $this->push('END_DATE', $end_date, 'STR');
+        $this->push('start_date', $start_date, 'STR');
+        $this->push('end_date', $end_date, 'STR');
         $connection = $this->connect('Campaign');
 
-        $error = "Error Selecting  Campaigns Stats " . implode(",", (array) $this->ADK_CONFIG['CAMPAIGN_ID']);
+        $error = "Error Selecting  Campaigns Stats " . implode(",", (array) $this->flexOBJECT['campaign_id']);
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->adkBidsystemService->GetCampaignStats($this->ADK_CONFIG['ADVERTISER_ID'], (array) $this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['START_DATE'], $this->ADK_CONFIG['END_DATE']);
+            $returnVal = $this->adkBidsystemService->GetCampaignStats($this->flexOBJECT['advertiser_id'], (array) $this->flexOBJECT['campaign_id'], $this->flexOBJECT['start_date'], $this->flexOBJECT['end_date']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -125,8 +184,8 @@ class ADK_SOAP_API
 
     public function getCampaignBidCostList($advertiser_id = false, $campaign_id = false, $start_date = false, $end_date = false)
     {
-        $this->push('ADVERTISER_ID', $advertiser_id, 'INT');
-        $this->push('CAMPAIGN_ID', $campaign_id, 'ARRAY');
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('campaign_id', $campaign_id, 'ARRAY');
 
 
         if (!$start_date) {
@@ -139,22 +198,22 @@ class ADK_SOAP_API
         } else {
             $end_date = date("Y-m-d", strtotime($end_date));
         }
-        $this->push('START_DATE', $start_date, 'STR');
-        $this->push('END_DATE', $end_date, 'STR');
+        $this->push('start_date', $start_date, 'STR');
+        $this->push('end_date', $end_date, 'STR');
         $connection = $this->connect('Campaign');
         #######################################################################################################################
         #TODO: NOTE:
         # There is currently a bug in the SOAP layer that expects that this will ALWAYS be an array of more than one campaigns.
         # but the service DOES de-dup the campaigns sent in so we will just dup the campaign_id if there is just one
         ########################################################################################################################
-        if (count((array) $this->ADK_CONFIG['CAMPAIGN_ID']) == 1) {
-            $this->ADK_CONFIG['CAMPAIGN_ID'] = array($this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
+        if (count((array) $this->flexOBJECT['campaign_id']) == 1) {
+            $this->flexOBJECT['campaign_id'] = array($this->flexOBJECT['campaign_id'], $this->flexOBJECT['campaign_id']);
         }
-        $error = "Error Selecting Campaigns Bid Cost List " . implode(",", (array) $this->ADK_CONFIG['CAMPAIGN_ID']);
+        $error = "Error Selecting Campaigns Bid Cost List " . implode(",", (array) $this->flexOBJECT['campaign_id']);
         $node = false;
         $shiftNode = 'Campaigns';
         try {
-            $returnVal = $this->adkBidsystemService->GetCampaignBidCostList($this->ADK_CONFIG['ADVERTISER_ID'], (array) $this->ADK_CONFIG['CAMPAIGN_ID'], $this->ADK_CONFIG['START_DATE'], $this->ADK_CONFIG['END_DATE']);
+            $returnVal = $this->adkBidsystemService->GetCampaignBidCostList($this->flexOBJECT['advertiser_id'], (array) $this->flexOBJECT['campaign_id'], $this->flexOBJECT['start_date'], $this->flexOBJECT['end_date']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -164,14 +223,14 @@ class ADK_SOAP_API
     //Setters
     public function setCampaignPaused($advertiser_id = false, $campaign_id = false)
     {
-        $this->push('ADVERTISER_ID', $advertiser_id, 'INT');
-        $this->push('CAMPAIGN_ID', $campaign_id, 'INT');
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('campaign_id', $campaign_id, 'INT');
         $connection = $this->connect('Campaign');
-        $error = "Error Pausing Campaign {$this->ADK_CONFIG['CAMPAIGN_ID']} ";
+        $error = "Error Pausing Campaign {$this->flexOBJECT['campaign_id']} ";
         $node = false;
         $shiftNode = 'return';
         try {
-            $returnVal = $this->adkBidsystemService->SetCampaignPaused($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
+            $returnVal = $this->adkBidsystemService->SetCampaignPaused($this->flexOBJECT['advertiser_id'], $this->flexOBJECT['campaign_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -180,14 +239,14 @@ class ADK_SOAP_API
 
     public function setCampaignActive($advertiser_id = false, $campaign_id = false)
     {
-        $this->push('ADVERTISER_ID', $advertiser_id, 'INT');
-        $this->push('CAMPAIGN_ID', $campaign_id, 'INT');
+        $this->push('advertiser_id', $advertiser_id, 'INT');
+        $this->push('campaign_id', $campaign_id, 'INT');
         $connection = $this->connect('Campaign');
-        $error = "Error Activating Campaign {$this->ADK_CONFIG['CAMPAIGN_ID']} ";
+        $error = "Error Activating Campaign {$this->flexOBJECT['campaign_id']} ";
         $node = false;
         $shiftNode = 'return';
         try {
-            $returnVal = $this->adkBidsystemService->SetCampaignActive($this->ADK_CONFIG['ADVERTISER_ID'], $this->ADK_CONFIG['CAMPAIGN_ID']);
+            $returnVal = $this->adkBidsystemService->SetCampaignActive($this->flexOBJECT['advertiser_id'], $this->flexOBJECT['campaign_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -253,7 +312,7 @@ class ADK_SOAP_API
                            ,'returnType'=>$returnType);
                     }
                     $this->_availableFunctions[$service]['Functions'][$functionName] = array(
-                        'SOAP_API' => $functionName
+                        'soap_api' => $functionName
                         , 'adk-bs.class' => $pseudoName
                         , 'available' => $available
                         , 'returnType' => $returnType
@@ -278,7 +337,7 @@ class ADK_SOAP_API
         }
     }
 
-    private function push($fld = 'CAMPAIGN_ID', $val = false, $type = 'INT')
+    private function push($fld = 'campaign_id', $val = false, $type = 'INT')
     {
         if ($val == false) {
             return;
@@ -288,16 +347,16 @@ class ADK_SOAP_API
                 if (!count($val)) {
                     return;
                 }
-                $this->ADK_CONFIG[$fld] = (array) $val;
+                $this->flexOBJECT[$fld] = (array) $val;
                 break;
             case 'INT':
-                $this->ADK_CONFIG[$fld] = (int) $val;
+                $this->flexOBJECT[$fld] = (int) $val;
                 break;
             case 'STR':
-                $this->ADK_CONFIG[$fld] = (string) $val;
+                $this->flexOBJECT[$fld] = (string) $val;
                 break;
             default:
-                $this->ADK_CONFIG[$fld] = $val;
+                $this->flexOBJECT[$fld] = $val;
         }
         return;
     }
@@ -308,12 +367,12 @@ class ADK_SOAP_API
             $this->adkBidsystemService = $this->_services[$service];
             return array('status' => 'success', 'type' => 'cached');
         }
-        $this->push('SERVICE', $service, 'STRING');
+        $this->push('service', $service, 'STRING');
         try {
             $this->adkBidsystemService = false;
-            $this->loginObject = new Soapheader(sprintf($this->ADK_CONFIG['NAMESPACE'], $this->ADK_CONFIG['SERVICE']), 'LoginObject', new LoginObject($this->ADK_CONFIG));
+            $this->loginObject = new Soapheader(sprintf($this->flexOBJECT['namespace'], $this->flexOBJECT['service']), 'LoginObject', new LoginObject($this->flexOBJECT));
 
-            $this->_services[$service] = new SoapClient(sprintf($this->ADK_CONFIG['WSDL'], $this->ADK_CONFIG['SERVICE']));
+            $this->_services[$service] = new SoapClient(sprintf($this->flexOBJECT['wsdl'], $this->flexOBJECT['service']));
             $this->_services[$service]->__setSoapHeaders(array($this->loginObject));
 
             $this->adkBidsystemService = $this->_services[$service];
@@ -326,27 +385,27 @@ class ADK_SOAP_API
 
     public function setAPIKey($api_key)
     {
-        $this->ADK_CONFIG['API_KEY'] = $api_key;
+        $this->flexOBJECT['api_key'] = $api_key;
     }
 
     public function setPassword($password)
     {
-        $this->ADK_CONFIG['PASSWORD'] = $password;
+        $this->flexOBJECT['password'] = $password;
     }
 
     public function setAdvertiserID($advertiser_id)
     {
-        $this->ADK_CONFIG['ADVERTISER_ID'] = $advertiser_id;
+        $this->flexOBJECT['advertiser_id'] = $advertiser_id;
     }
 
     public function setCampaignID($campaign_id)
     {
-        $this->ADK_CONFIG['CAMPAIGN_ID'] = $campaign_id;
+        $this->flexOBJECT['campaign_id'] = $campaign_id;
     }
 
     public function setGeoCountry($country)
     {
-        $this->ADK_CONFIG['GEO_COUNTRY'] = $country;
+        $this->flexOBJECT['geo_country'] = $country;
     }
 
 }
