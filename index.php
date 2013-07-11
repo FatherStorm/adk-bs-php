@@ -79,14 +79,19 @@ $adk_soap_api->setCampaignID('888994');
  * (int)$advertiser_id defaultsto config
  * (array)$campaign_id defaults to config
  */
-dump($adk_soap_api->getAdGroupsByCampaign());
+#dump($adk_soap_api->getAdGroupsByCampaign());
+#$adk_soap_api->setAdGroupID(1519917);
+#dump($adk_soap_api->setAdGroupPaused(false,'1519917'));
+#dump($adk_soap_api->setAdGroupActive(false,'1519917'));
+#dump($adk_soap_api->getAdGroupsByCampaign());
+#dump($adk_soap_api->getAdGroupStats());
 
 /*
  * getActiveAdGroupsByCampaign($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaultsto config
  * (array)$campaign_id defaults to config
  */
-dump($adk_soap_api->getActiveAdGroupsByCampaign());
+#dump($adk_soap_api->getActiveAdGroupsByCampaign());
 
 /*
  * getCampaignStats($advertiser_id,$campaign_id,$start_date,$end_date);
@@ -95,7 +100,7 @@ dump($adk_soap_api->getActiveAdGroupsByCampaign());
  * (date)$start_date defaults to 1 month ago
  * (date)$end_date defaults to latest available
  */
-dump($adk_soap_api->getCampaignStats());
+#dump($adk_soap_api->getCampaignStats());
 
 /*
  * getCampaignBidCostList($advertiser_id,$campaign_id,$start_date,$end_date);
@@ -104,35 +109,34 @@ dump($adk_soap_api->getCampaignStats());
  * (date)$start_date defaults to 1 month ago
  * (date)$end_date defaults to latest available
  */
-dump($adk_soap_api->getCampaignBidCostList());
-die();
+#dump($adk_soap_api->getCampaignBidCostList());
 /*
  * getCampaignList($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-dump($adk_soap_api->getCampaignList());
+#dump($adk_soap_api->getCampaignList());
 
 /*
  * getActiveCampaignList($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-dump($adk_soap_api->getActiveCampaignList());
+#dump($adk_soap_api->getActiveCampaignList());
 
 /*
  * setCampaignActive($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-dump($adk_soap_api->setCampaignActive());
+#dump($adk_soap_api->setCampaignActive());
 
 /*
  * setCampaignPaused($advertiser_id,$campaign_id);
  * (int)$advertiser_id defaults to config
  * (int)$campaign_id defaults to config
  */
-dump($adk_soap_api->setCampaignPaused());
+#dump($adk_soap_api->setCampaignPaused());
 
 
 
