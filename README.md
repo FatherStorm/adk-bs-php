@@ -2,15 +2,13 @@ adk-bs-php
 ==========
 
 Adknowledge Bidsystem SOAP API PHP wrapper
+------------------------------------------
 
-NOTE!!!
-BIG FAT DISCLAIMER!!!!
-PAY ATTENTION! Important stuff here!!!
+####Note:
+ This class was written as a side-project. This project is not affiliated with Adknowledge and makes no warranties or guarantees as to performance, correctness or completeness.
 
+####Info:
+ I wrote this class because I needed a way to easily interface with the official [Adknowledge SOAP API](http://api.bidsystem.com/ "Adknowledge SOAP API")  from inside any extensible php framework. At the moment, actual coded functionality is limited, BUT that doesn't mean it can't do just about everything that the SOAP API allows.  To achieve that, I'm using the magic __call() function in php to dynamically build any missing functions at request-time based on the information available about them using the SOAP API's getFunctions call. SO. That means that even though I've commented out the perfectly fine working function "getCampaignList", calling it with '$adk_soap_api->getCampaignList();' will still work. As I have time, I will add more actual functions and do whatever one-off and validation and so-on but until then, this class still can fullfill just about every need..
 
-Adknowledge in NO WAY and in NO PART supports or officially maintains this code and DOES NOT guarantee that this code even works, much less works as expected.
-This code is simply developed and maintained by a single ADK developer for development, debugging, and entertainment purposes.
-Use of this code automatically places any and all responsibility of campaigns breaking, sinkholes in the streets, and the End Of Days solely on the user of this code.
-If You DO have an issue, there is a slight chance I will have time to help you with it and you can certainly try contacting me at fatherstorm@gmail.com and if by some miracle I have any time, I will do what I can toy help you.
-this code is subject to rapid and disturbing changes, so don't get too used to what you see, it could be totally different tomorrow.
-
+####Contact:
+ You are welcome to contact me with any questions, but I do not guarantee that I will be able to respond in any meaningful amount of time. Again, this is a personal project and NOT in any way officially sanctioned or supported by Adknowledge or Bidsystem.

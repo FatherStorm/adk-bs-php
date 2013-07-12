@@ -1,9 +1,7 @@
 <?php
-
 /*
  *  LIBRARY CODE -- CHANGE AT YOUR OWN RISK
  */
-
 class LoginObject
 {
 
@@ -61,58 +59,17 @@ class ADK_SOAP_API
         }
         if (array_key_exists($func, $this->soap['Services']['unimplementedFunctions'])) {
             $magicFn = $this->soap['Services']['unimplementedFunctions'][$func];
-
+            $magicUserFuncParams=array();
            foreach($magicFn['parameters'] as $offset=>$param){
               $this->push(str_replace("$","",$param['parameterName']),$params[$offset],$param['parameterType']);
+              $magicUserFuncParams= $this->flexOBJECT[$param['parameterName']];
            }
             $connection = $this->connect($magicFn['service']);
             $error="There was an error attempting to return data for magicClass $func()";
             $node=$magicFn['returnType'];
-            /*
-             * The API says the most number of parameters for a function is 5. that is
-             * manageable for a switch statement...
-             */
+            $magicUserFunc= "{$magicFn['remoteName']}";
             try {
-                switch(count($magicFn['parameters'])){
-                    case 1:
-                       $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
-                               $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
-                               );
-                        break;
-                    case 2:
-                        $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
-                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
-                                );
-                        break;
-                    case 3:
-                          $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
-                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][2]['parameterName']]
-                                );
-                        break;
-                    case 4:
-                          $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
-                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][2]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][3]['parameterName']]
-                                );
-                        break;
-                    case 5:
-                          $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
-                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][2]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][3]['parameterName']]
-                                ,$this->flexOBJECT[$magicFn['parameters'][4]['parameterName']]
-                                );
-                        break;
-                    default:
-                         return array('status' => 'error', 'line' => __LINE__, 'message' =>"We attempted to call a magic function {$magicFn['remoteName']} with ".count($params)." parameters and the function thinks there shold be ".count($magicFn['parameters']));
-                        break;
-                }
+                $returnVal=  call_user_func(array($this->adkBidsystemService,$magicUserFunc), $magicUserFuncParams);
                 return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
             } catch (Exception $e) {
                 return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
