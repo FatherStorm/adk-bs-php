@@ -12,3 +12,22 @@ Adknowledge Bidsystem SOAP API PHP wrapper
 
 ####Contact:
  You are welcome to contact me with any questions, but I do not guarantee that I will be able to respond in any meaningful amount of time. Again, this is a personal project and NOT in any way officially sanctioned or supported by Adknowledge or Bidsystem.
+
+####Personal Disclaimer:
+ This code seems to work well enough so far in my testing. That does not mean that it won't put salt in your kool-aid while you're sleeping, and I make no warranties as to it's quality and that it won't end up on [theDailyWTF](http://www.thedailtwtf.com) tomorrow.
+ 
+
+###License/Disclaimer:
+<pre>
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</pre>
