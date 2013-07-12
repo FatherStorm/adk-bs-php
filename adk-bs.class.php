@@ -52,9 +52,74 @@ class ADK_SOAP_API
         $this->flexOBJECT['wsdl'] = isset($this->flexOBJECT['wsdl']) && trim($this->flexOBJECT['wsdl']) ?
                 $this->flexOBJECT['wsdl'] :
                 'https://api.bidsystem.com/2011-10-01/%s.wsdl';
+    }
+
+    public function __call($func, $params)
+    {
+        if(!isset($this->soap)){
+            $this->soap = $this->getFunctions();
+        }
+        if (array_key_exists($func, $this->soap['Services']['unimplementedFunctions'])) {
+            $magicFn = $this->soap['Services']['unimplementedFunctions'][$func];
+
+           foreach($magicFn['parameters'] as $offset=>$param){
+              $this->push(str_replace("$","",$param['parameterName']),$params[$offset],$param['parameterType']);
+           }
+            $connection = $this->connect($magicFn['service']);
+            $error="There was an error attempting to return data for magicClass $func()";
+            $node=$magicFn['returnType'];
+            /*
+             * The API says the most number of parameters for a function is 5. that is
+             * manageable for a switch statement...
+             */
+            try {
+                switch(count($magicFn['parameters'])){
+                    case 1:
+                       $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
+                               $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
+                               );
+                        break;
+                    case 2:
+                        $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
+                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
+                                );
+                        break;
+                    case 3:
+                          $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
+                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][2]['parameterName']]
+                                );
+                        break;
+                    case 4:
+                          $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
+                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][2]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][3]['parameterName']]
+                                );
+                        break;
+                    case 5:
+                          $returnVal = $this->adkBidsystemService->$magicFn['remoteName'](
+                                $this->flexOBJECT[$magicFn['parameters'][0]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][1]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][2]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][3]['parameterName']]
+                                ,$this->flexOBJECT[$magicFn['parameters'][4]['parameterName']]
+                                );
+                        break;
+                    default:
+                         return array('status' => 'error', 'line' => __LINE__, 'message' =>"We attempted to call a magic function {$magicFn['remoteName']} with ".count($params)." parameters and the function thinks there shold be ".count($magicFn['parameters']));
+                        break;
+                }
+                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
+            } catch (Exception $e) {
+                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
+            }
 
 
-
+        }
     }
 
     //Getters
@@ -65,7 +130,7 @@ class ADK_SOAP_API
         $connection = $this->connect('AdGroup');
         $error = "Error Selecting Campaign {$this->flexOBJECT['campaign_id']} ";
         $node = 'AdGroup';
-        $shiftNode=false;
+        $shiftNode = false;
         try {
             $returnVal = $this->adkBidsystemService->GetAdGroup($this->flexOBJECT['advertiser_id'], $this->flexOBJECT['ad_group_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
@@ -81,14 +146,15 @@ class ADK_SOAP_API
         $connection = $this->connect('AdGroup');
         $error = "Error Selecting Ad Groups for Campaign {$this->flexOBJECT['campaign_id']} ";
         $node = 'AdGroups';
-        $pseudoNode=false;
+        $pseudoNode = false;
         try {
-            $returnVal = $this->adkBidsystemService->GetAdGroupsByCampaign($this->flexOBJECT['advertiser_id'], (array)$this->flexOBJECT['campaign_id']);
+            $returnVal = $this->adkBidsystemService->GetAdGroupsByCampaign($this->flexOBJECT['advertiser_id'], (array) $this->flexOBJECT['campaign_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
-            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage().var_export( $this->flexOBJECT));
+            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage() . var_export($this->flexOBJECT));
         }
     }
+
     public function getActiveAdGroupsByCampaign($advertiser_id = false, $campaign_id = false)
     {
         $this->push('advertiser_id', $advertiser_id, 'INT');
@@ -96,16 +162,16 @@ class ADK_SOAP_API
         $connection = $this->connect('AdGroup');
         $error = "Error Selecting Ad Groups for Campaign {$this->flexOBJECT['campaign_id']} ";
         $node = 'AdGroups';
-        $pseudoNode=false;
+        $pseudoNode = false;
         try {
-            $returnVal = $this->adkBidsystemService->GetActiveAdGroupsByCampaign($this->flexOBJECT['advertiser_id'], (array)$this->flexOBJECT['campaign_id']);
+            $returnVal = $this->adkBidsystemService->GetActiveAdGroupsByCampaign($this->flexOBJECT['advertiser_id'], (array) $this->flexOBJECT['campaign_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
         } catch (Exception $e) {
-            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage().var_export( $this->flexOBJECT));
+            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage() . var_export($this->flexOBJECT));
         }
     }
 
-       public function getAdGroupStats($advertiser_id = false, $ad_group_id = false, $start_date = false, $end_date = false)
+    public function getAdGroupStats($advertiser_id = false, $ad_group_id = false, $start_date = false, $end_date = false)
     {
         $this->push('advertiser_id', $advertiser_id, 'INT');
         $this->push('ad_group_id', $ad_group_id, 'ARRAY');
@@ -150,7 +216,7 @@ class ADK_SOAP_API
         $connection = $this->connect('Campaign');
         $error = "Error Selecting Campaign {$this->flexOBJECT['campaign_id']} ";
         $node = 'Campaign';
-        $pseudoNode=false;
+        $pseudoNode = false;
         try {
             $returnVal = $this->adkBidsystemService->GetCampaign($this->flexOBJECT['advertiser_id'], $this->flexOBJECT['campaign_id']);
             return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
@@ -159,20 +225,21 @@ class ADK_SOAP_API
         }
     }
 
-    public function getCampaignList($advertiser_id = false)
-    {
-        $this->push('advertiser_id', $advertiser_id, 'INT');
-        $connection = $this->connect('Campaign');
-        $error = "Error Selecting Advertiser Campaigns {$this->flexOBJECT['campaign_id']} ";
-        $node = false;
-        $shiftNode = 'Campaigns';
-        try {
-            $returnVal = $this->adkBidsystemService->GetCampaignList($this->flexOBJECT['advertiser_id']);
-            return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
-        } catch (Exception $e) {
-            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
-        }
-    }
+    //Commented out to show magicFn working
+//    public function getCampaignList($advertiser_id = false)
+//    {
+//        $this->push('advertiser_id', $advertiser_id, 'INT');
+//        $connection = $this->connect('Campaign');
+//        $error = "Error Selecting Advertiser Campaigns {$this->flexOBJECT['campaign_id']} ";
+//        $node = false;
+//        $shiftNode = 'Campaigns';
+//        try {
+//            $returnVal = $this->adkBidsystemService->GetCampaignList($this->flexOBJECT['advertiser_id']);
+//            return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
+//        } catch (Exception $e) {
+//            return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
+//        }
+//    }
 
     public function getActiveCampaignList($advertiser_id = false)
     {
@@ -259,7 +326,7 @@ class ADK_SOAP_API
     }
 
     //Setters
-     public function setAdGroupActive($advertiser_id = false, $ad_group_id = false)
+    public function setAdGroupActive($advertiser_id = false, $ad_group_id = false)
     {
         $this->push('advertiser_id', $advertiser_id, 'INT');
         $this->push('ad_group_id', $ad_group_id, 'INT');
@@ -290,7 +357,8 @@ class ADK_SOAP_API
             return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
         }
     }
-     public function setCampaignActive($advertiser_id = false, $campaign_id = false)
+
+    public function setCampaignActive($advertiser_id = false, $campaign_id = false)
     {
         $this->push('advertiser_id', $advertiser_id, 'INT');
         $this->push('campaign_id', $campaign_id, 'INT');
@@ -322,7 +390,6 @@ class ADK_SOAP_API
         }
     }
 
-
 //iNTERNAL PRIVATE STUFF
     private function processReturn($returnVal, $error = false, $function = false, $node = false, $shiftNode = false)
     {
@@ -346,7 +413,8 @@ class ADK_SOAP_API
 
     public function getFunctions()
     {
-        $this->_availableFunctions = array('implementedFunctions'=>array(),'unimplementedFunctions'=>array());
+        $maxParams=0;
+        $this->_availableFunctions = array('implementedFunctions' => array(), 'unimplementedFunctions' => array());
         foreach ($this->_availableServices as $service) {
             $this->_availableFunctions[$service] = array('status' => '', 'Functions' => array());
             $connection = $this->connect($service);
@@ -354,51 +422,53 @@ class ADK_SOAP_API
                 $this->_availableFunctions[$service]['status'] = 'unavailable';
             } else {
                 $this->_availableFunctions[$service]['status'] = 'available';
-                $functionList = json_decode(json_encode($this->adkBidsystemService->__getFunctions()),true);
+                $functionList = json_decode(json_encode($this->adkBidsystemService->__getFunctions()), true);
 
                 foreach ($functionList as $fn) {
                     list($returnType, $functionCall) = explode(" ", trim($fn), 2);
                     list($functionName, $args) = explode("(", str_replace(")", "", $functionCall), 2);
-                    $pseudoName = strtolower(substr($functionName,0,1)).substr($functionName,1);
+                    $pseudoName = strtolower(substr($functionName, 0, 1)) . substr($functionName, 1);
                     $args = explode(",", $args);
-                    $parameters=array();
+                    $parameters = array();
                     foreach ($args as $arg) {
-                       $arg=trim($arg);
+                        $arg = trim($arg);
                         list($argType, $arg) = explode(" ", $arg, 2);
-                        $parameters[$arg] = array('parameterType' => $argType, 'parameterName' => $arg);
+                        $parameters[] = array('parameterType' => $argType, 'parameterName' => str_replace("$","",$arg));
                     }
-                    if( method_exists($this, $pseudoName)){
-                       $available='Yes';
-                       $this->_availableFunctions['implementedFunctions'][$pseudoName]=array(
-                           'remoteName'=>$functionName
-                           , 'localName'=>$pseudoName
-                           ,'parameters'=>$parameters
-                           ,'returnType'=>$returnType);
-                    }else{
-                        $available='No';
-                        $this->_availableFunctions['unimplementedFunctions'][$pseudoName]=array(
-                           'remoteName'=>$functionName
-                           , 'localName'=>$pseudoName.' [PENDING IMPLEMENTATION]'
-                           ,'parameters'=>$parameters
-                           ,'returnType'=>$returnType);
+                    $maxParams=count($parameters)>$maxParams?count($parameters):$maxParams;
+                    if (method_exists($this, $pseudoName)) {
+                        $available = 'Yes';
+                        $this->_availableFunctions['implementedFunctions'][$pseudoName] = array(
+                            'remoteName' => $functionName
+                            , 'localName' => $pseudoName
+                            , 'parameters' => $parameters
+                            , 'returnType' => $returnType
+                            ,'service'=>$service
+                            );
+                    } else {
+                        $available = 'No';
+                        $this->_availableFunctions['unimplementedFunctions'][$pseudoName] = array(
+                            'remoteName' => $functionName
+                            , 'localName' => $pseudoName . ' [PENDING IMPLEMENTATION]'
+                            , 'parameters' => $parameters
+                            , 'returnType' => $returnType
+                             ,'service'=>$service
+                            );
                     }
                     $this->_availableFunctions[$service]['Functions'][$functionName] = array(
                         'soap_api' => $functionName
                         , 'adk-bs.class' => $pseudoName
                         , 'available' => $available
                         , 'returnType' => $returnType
-                        , 'functionCall' =>  strtolower(substr($functionCall,0,1)).substr($functionCall,1)
+                        , 'functionCall' => strtolower(substr($functionCall, 0, 1)) . substr($functionCall, 1)
                         , 'parameters' => $parameters
                     );
-
-
                 }
             }
-
         }
         ksort($this->_availableFunctions['implementedFunctions']);
         ksort($this->_availableFunctions['unimplementedFunctions']);
-        return(array('status' => 'success', 'Services' => $this->_availableFunctions));
+        return(array('status' => 'success','Most Parameters in any function'=>$maxParams, 'Services' => $this->_availableFunctions));
     }
 
     public function __destruct()
@@ -473,6 +543,7 @@ class ADK_SOAP_API
     {
         $this->flexOBJECT['campaign_id'] = $campaign_id;
     }
+
     public function setAdGroupID($ad_group_id)
     {
         $this->flexOBJECT['ad_group_id'] = $ad_group_id;

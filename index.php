@@ -45,6 +45,7 @@ $adk_soap_api->setPassword('08BC5F9AA19371862B489840B39EB2D1');
 //Set a Advertiser ID and Campaign ID at runtime and turn a campaign On
 $adk_soap_api->setAdvertiserID('378707');
 $adk_soap_api->setCampaignID('888994');
+dump($adk_soap_api->getCampaignList(378707));
 
 
 
@@ -147,7 +148,7 @@ $adk_soap_api->setCampaignID('888994');
  * in which case all the function calls will end up changing to be prefixed with the service name.
  * I'm hoping to avoid this the make the class a bit flatter and easier to remember the calls.
  */
-dump($adk_soap_api->getFunctions());
+#dump($adk_soap_api->getFunctions());
 
 //
 ///*
