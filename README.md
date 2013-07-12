@@ -14,7 +14,7 @@ Adknowledge Bidsystem SOAP API PHP wrapper
  You are welcome to contact me with any questions, but I do not guarantee that I will be able to respond in any meaningful amount of time. Again, this is a personal project and NOT in any way officially sanctioned or supported by Adknowledge or Bidsystem.
 
 ####Personal Disclaimer:
- This code seems to work well enough so far in my testing. That does not mean that it won't put salt in your kool-aid while you're sleeping, and I make no warranties as to it's quality and that it won't end up on [theDailyWTF](http://www.thedailtwtf.com) tomorrow.
+ This code seems to work well enough so far in my testing. That does not mean that it won't put salt in your kool-aid while you're sleeping, and I make no warranties as to it's quality and that it won't end up on [theDailyWTF](http://www.thedailywtf.com) tomorrow.
  
 
 ###License/Disclaimer:
