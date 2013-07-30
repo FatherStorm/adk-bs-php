@@ -50,69 +50,8 @@ $adk_soap_api->setPassword($cfg['password']);
 //Set a Advertiser ID and Campaign ID at runtime and turn a campaign On
 $adk_soap_api->setAdvertiserID($cfg['advertiser_id']);
 $adk_soap_api->setCampaignID($cfg['campaign_id']);
-$funcs = $adk_soap_api->getFunctions();
-$writables = $funcs['Services']['unimplementedFunctions'];
+dump($adk_soap_api->getFunctions());
 
-echo"<pre>";
-
-$full_output=array();
-foreach ($writables as $key => $fn) {
-   $full_output[$fn['service']][$key]= make_fn($key, $fn);
-}
-ksort($full_output);
-foreach($full_output as $service=>$fns){
-    echo"######################################################################################################\r\n";
-    echo"######################################################################################################\r\n";
-    echo"##      $service\r\n";
-    echo"######################################################################################################\r\n";
-    echo"######################################################################################################\r\n\r\n";
-    ksort($fns);
-    echo implode("\r\n\r\n",$fns);
-    echo"\r\n";
-}
-function make_fn($key, $fn)
-{
-    $pList = $cList = $sList=$pushList=array();
-    if(count($fn['parameters'])){
-    foreach ($fn['parameters'] as $param) {
-        if(trim($param['parameterName'])){
-
-        $pushList[] = sprintf("\t\$this->push('%s',%s,'%s');", $param['parameterName'], '$' . $param['parameterName'], strtoupper($param['parameterType']));
-        $sList[] = '$this->flexObject[' . $param['parameterName'] . ']';
-        $pList[] = "$" . $param['parameterName'] . ' = false';
-        $cList[] = '$' . $param['parameterName'] . ' [' . $param['parameterType'] . ']';
-    }
-    }
-    }
-    $output = "
-    /*
-     * Auto-Generated Code: USE AT YOUR OWN RISK!
-     * Service: {$fn['service']}
-     * $key(" . implode(",", $cList) . ")
-     *
-     */
-
-    public function $key(" . implode(",", $pList) . "){
- " . implode("\r\n", $pushList) . "
-    \t\$connection = \$this->connect('{$fn['service']}');
-    \t\$error = 'Error Selecting Campaign {" . implode(",", $sList) . "} ';
-    \t\$node = '{$fn['service']}';
-    \t\$shiftNode = false;
-        try {
-                \$returnVal = \$this->adkBidsystemService->{$fn['remoteName']}(" . implode(",", $sList) . ");
-                return \$this->processReturn(\$returnVal, \$error, __FUNCTION__, \$node, \$shiftNode);
-            } catch (Exception \$e) {
-                return array('status' => 'error', 'line' => __LINE__, 'message' => \$e->getMessage());
-            }
-
-    }
-            ";
-
-    return $output;
-}
-
-#echo"<pre>";
-#print_r($writables);
 
 
 
