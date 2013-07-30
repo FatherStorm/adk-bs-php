@@ -24,11 +24,16 @@ $ADK_CONFIG = array(
     'namespace' => 'https://api.bidsystem.com/2011-10-01/%s.svc'            //This Parameter may change and is not required and defaults as shown. It cannot be changed after the class is initialized
     , 'wsdl' => 'https://api.bidsystem.com/2011-10-01/%s.wsdl'              //This Parameter may change and is not required and defaults as shown. It cannot be changed after the class is initialized
     , 'service' => 'Campaign'                                               //This Parameter changes depending on the service called
-    , 'api_key' => 'ADKNOWLEDGE'                                                       //This parameter is required but can be set using setAPIKey()
-    , 'password' => '08BC5F9AA19371862B489840B39EB2D1'                                                      //This parameter is required but can be set using setPassword();
+    , 'api_key' => ''                                                       //This parameter is required but can be set using setAPIKey()
+    , 'password' => ''                                                      //This parameter is required but can be set using setPassword();
     , 'advertiser_id' => ''                                                 //This parameter is required but can be set after the class is initiated using setAdvertiserID();
     , 'campaign_id' => ''                                                   //This parameter is required can be passed at call time or initiated using setCampaignID();
 );
+/*
+ * For purposes of this class, we're using a external config with our actual tokens.
+ */
+require('../config.php');
+
 
 
 /*
@@ -39,13 +44,15 @@ $adk_soap_api = new ADK_SOAP_API($ADK_CONFIG);
 /*
  *  NOTE! If a API KEY and Password were NOT specified in the initial $ADK_CONFIG array object, they will need to be expilicitely set before any actions are taken
  */
-$adk_soap_api->setAPIKey('ADKNOWLEDGE');
-$adk_soap_api->setPassword('08BC5F9AA19371862B489840B39EB2D1');
+$adk_soap_api->setAPIKey($cfg['api_key']);
+$adk_soap_api->setPassword($cfg['password']);
 
 //Set a Advertiser ID and Campaign ID at runtime and turn a campaign On
-$adk_soap_api->setAdvertiserID('378707');
-$adk_soap_api->setCampaignID('888994');
-dump($adk_soap_api->getFunctions());
+$adk_soap_api->setAdvertiserID($cfg['advertiser_id']);
+$adk_soap_api->setCampaignID($cfg['campaign_id']);
+$funcs=$adk_soap_api->getFunctions();
+echo"<pre>";
+print_r($funcs);
 
 
 
