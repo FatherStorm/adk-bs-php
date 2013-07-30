@@ -533,7 +533,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroup
-//     * createAdGroup($advertiser_id [int],$ad_group [AdGroup])
+//     * createAdGroup($advertiser_id ["int"],$ad_group ["AdGroup"])
 //     *
 //     */
 //
@@ -541,11 +541,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_group',$ad_group,'ADGROUP');
 //    	$connection = $this->connect('AdGroup');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group"]} ';
 //    	$node = 'AdGroup';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->CreateAdGroup($this->flexObject[advertiser_id],$this->flexObject[ad_group]);
+//                $returnVal = $this->adkBidsystemService->CreateAdGroup($this->flexObject["advertiser_id"],$this->flexObject["ad_group"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -558,7 +558,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroup
-//     * createAdGroupList($advertiser_id [int],$ad_groups [ArrayOfAdGroup])
+//     * createAdGroupList($advertiser_id ["int"],$ad_groups ["ArrayOfAdGroup"])
 //     *
 //     */
 //
@@ -566,11 +566,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_groups',$ad_groups,'ARRAYOFADGROUP');
 //    	$connection = $this->connect('AdGroup');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_groups]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_groups"]} ';
 //    	$node = 'AdGroup';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->CreateAdGroupList($this->flexObject[advertiser_id],$this->flexObject[ad_groups]);
+//                $returnVal = $this->adkBidsystemService->CreateAdGroupList($this->flexObject["advertiser_id"],$this->flexObject["ad_groups"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -583,7 +583,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroup
-//     * updateAdGroup($advertiser_id [int],$ad_group [AdGroup])
+//     * updateAdGroup($advertiser_id ["int"],$ad_group ["AdGroup"])
 //     *
 //     */
 //
@@ -591,11 +591,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_group',$ad_group,'ADGROUP');
 //    	$connection = $this->connect('AdGroup');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group"]} ';
 //    	$node = 'AdGroup';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateAdGroup($this->flexObject[advertiser_id],$this->flexObject[ad_group]);
+//                $returnVal = $this->adkBidsystemService->UpdateAdGroup($this->flexObject["advertiser_id"],$this->flexObject["ad_group"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -608,7 +608,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroup
-//     * updateAdGroupList($advertiser_id [int],$ad_groups [ArrayOfAdGroup])
+//     * updateAdGroupList($advertiser_id ["int"],$ad_groups ["ArrayOfAdGroup"])
 //     *
 //     */
 //
@@ -616,11 +616,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_groups',$ad_groups,'ARRAYOFADGROUP');
 //    	$connection = $this->connect('AdGroup');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_groups]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_groups"]} ';
 //    	$node = 'AdGroup';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateAdGroupList($this->flexObject[advertiser_id],$this->flexObject[ad_groups]);
+//                $returnVal = $this->adkBidsystemService->UpdateAdGroupList($this->flexObject["advertiser_id"],$this->flexObject["ad_groups"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -638,7 +638,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * addAdGroupCategory($advertiser_id [int],$category [AdGroupCategory])
+//     * addAdGroupCategory($advertiser_id ["int"],$category ["AdGroupCategory"])
 //     *
 //     */
 //
@@ -646,11 +646,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('category',$category,'ADGROUPCATEGORY');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[category]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["category"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->AddAdGroupCategory($this->flexObject[advertiser_id],$this->flexObject[category]);
+//                $returnVal = $this->adkBidsystemService->AddAdGroupCategory($this->flexObject["advertiser_id"],$this->flexObject["category"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -663,7 +663,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * addAdGroupCategoryList($advertiser_id [int],$categories [ArrayOfAdGroupCategory])
+//     * addAdGroupCategoryList($advertiser_id ["int"],$categories ["ArrayOfAdGroupCategory"])
 //     *
 //     */
 //
@@ -671,11 +671,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('categories',$categories,'ARRAYOFADGROUPCATEGORY');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[categories]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["categories"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->AddAdGroupCategoryList($this->flexObject[advertiser_id],$this->flexObject[categories]);
+//                $returnVal = $this->adkBidsystemService->AddAdGroupCategoryList($this->flexObject["advertiser_id"],$this->flexObject["categories"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -688,7 +688,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * getActiveAdGroupCategoryList($advertiser_id [int],$ad_group_id [int])
+//     * getActiveAdGroupCategoryList($advertiser_id ["int"],$ad_group_id ["int"])
 //     *
 //     */
 //
@@ -696,11 +696,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_group_id',$ad_group_id,'INT');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetActiveAdGroupCategoryList($this->flexObject[advertiser_id],$this->flexObject[ad_group_id]);
+//                $returnVal = $this->adkBidsystemService->GetActiveAdGroupCategoryList($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -713,7 +713,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * getAdGroupCategoriesByCampaign($advertiser_id [int],$campaign_id [int])
+//     * getAdGroupCategoriesByCampaign($advertiser_id ["int"],$campaign_id ["int"])
 //     *
 //     */
 //
@@ -721,11 +721,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_id',$campaign_id,'INT');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetAdGroupCategoriesByCampaign($this->flexObject[advertiser_id],$this->flexObject[campaign_id]);
+//                $returnVal = $this->adkBidsystemService->GetAdGroupCategoriesByCampaign($this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -738,7 +738,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * getAdGroupCategory($advertiser_id [int],$ad_group_id [int],$category_id [int])
+//     * getAdGroupCategory($advertiser_id ["int"],$ad_group_id ["int"],$category_id ["int"])
 //     *
 //     */
 //
@@ -747,11 +747,11 @@ class ADK_SOAP_API
 //	$this->push('ad_group_id',$ad_group_id,'INT');
 //	$this->push('category_id',$category_id,'INT');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetAdGroupCategory($this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]);
+//                $returnVal = $this->adkBidsystemService->GetAdGroupCategory($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -764,7 +764,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * getAdGroupCategoryList($advertiser_id [int],$ad_group_id [int])
+//     * getAdGroupCategoryList($advertiser_id ["int"],$ad_group_id ["int"])
 //     *
 //     */
 //
@@ -772,11 +772,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_group_id',$ad_group_id,'INT');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetAdGroupCategoryList($this->flexObject[advertiser_id],$this->flexObject[ad_group_id]);
+//                $returnVal = $this->adkBidsystemService->GetAdGroupCategoryList($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -789,7 +789,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * getAdGroupCategoryStats($advertiser_id [int],$ad_group_id [int],$category_ids [ArrayOfInt],$start_date [string],$end_date [string])
+//     * getAdGroupCategoryStats($advertiser_id ["int"],$ad_group_id ["int"],$category_ids ["ArrayOfInt"],$start_date ["string"],$end_date ["string"])
 //     *
 //     */
 //
@@ -800,11 +800,11 @@ class ADK_SOAP_API
 //	$this->push('start_date',$start_date,'STRING');
 //	$this->push('end_date',$end_date,'STRING');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_ids],$this->flexObject[start_date],$this->flexObject[end_date]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_ids"],$this->flexObject["start_date"],$this->flexObject["end_date"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetAdGroupCategoryStats($this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_ids],$this->flexObject[start_date],$this->flexObject[end_date]);
+//                $returnVal = $this->adkBidsystemService->GetAdGroupCategoryStats($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_ids"],$this->flexObject["start_date"],$this->flexObject["end_date"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -817,7 +817,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * removeAdgroupCategory($advertiser_id [int],$ad_group_id [int],$category_id [int])
+//     * removeAdgroupCategory($advertiser_id ["int"],$ad_group_id ["int"],$category_id ["int"])
 //     *
 //     */
 //
@@ -826,11 +826,11 @@ class ADK_SOAP_API
 //	$this->push('ad_group_id',$ad_group_id,'INT');
 //	$this->push('category_id',$category_id,'INT');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->RemoveAdgroupCategory($this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]);
+//                $returnVal = $this->adkBidsystemService->RemoveAdgroupCategory($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -843,7 +843,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * setAdGroupCategoryPaused($advertiser_id [int],$ad_group_id [int],$category_id [int])
+//     * setAdGroupCategoryPaused($advertiser_id ["int"],$ad_group_id ["int"],$category_id ["int"])
 //     *
 //     */
 //
@@ -852,11 +852,11 @@ class ADK_SOAP_API
 //	$this->push('ad_group_id',$ad_group_id,'INT');
 //	$this->push('category_id',$category_id,'INT');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->SetAdGroupCategoryPaused($this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]);
+//                $returnVal = $this->adkBidsystemService->SetAdGroupCategoryPaused($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -869,7 +869,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * setAdgroupCategoryActive($advertiser_id [int],$ad_group_id [int],$category_id [int])
+//     * setAdgroupCategoryActive($advertiser_id ["int"],$ad_group_id ["int"],$category_id ["int"])
 //     *
 //     */
 //
@@ -878,11 +878,11 @@ class ADK_SOAP_API
 //	$this->push('ad_group_id',$ad_group_id,'INT');
 //	$this->push('category_id',$category_id,'INT');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->SetAdgroupCategoryActive($this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id]);
+//                $returnVal = $this->adkBidsystemService->SetAdgroupCategoryActive($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -895,7 +895,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * updateAdGroupCategory($advertiser_id [int],$category [AdGroupCategory])
+//     * updateAdGroupCategory($advertiser_id ["int"],$category ["AdGroupCategory"])
 //     *
 //     */
 //
@@ -903,11 +903,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('category',$category,'ADGROUPCATEGORY');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[category]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["category"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateAdGroupCategory($this->flexObject[advertiser_id],$this->flexObject[category]);
+//                $returnVal = $this->adkBidsystemService->UpdateAdGroupCategory($this->flexObject["advertiser_id"],$this->flexObject["category"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -920,7 +920,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: AdGroupCategory
-//     * updateAdGroupCategoryList($advertiser_id [int],$categories [ArrayOfAdGroupCategory])
+//     * updateAdGroupCategoryList($advertiser_id ["int"],$categories ["ArrayOfAdGroupCategory"])
 //     *
 //     */
 //
@@ -928,11 +928,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('categories',$categories,'ARRAYOFADGROUPCATEGORY');
 //    	$connection = $this->connect('AdGroupCategory');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[categories]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["categories"]} ';
 //    	$node = 'AdGroupCategory';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateAdGroupCategoryList($this->flexObject[advertiser_id],$this->flexObject[categories]);
+//                $returnVal = $this->adkBidsystemService->UpdateAdGroupCategoryList($this->flexObject["advertiser_id"],$this->flexObject["categories"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -950,18 +950,18 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Advertiser
-//     * getAdvertiser($advertiser_id [int])
+//     * getAdvertiser($advertiser_id ["int"])
 //     *
 //     */
 //
 //    public function getAdvertiser($advertiser_id = false){
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //    	$connection = $this->connect('Advertiser');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"]} ';
 //    	$node = 'Advertiser';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetAdvertiser($this->flexObject[advertiser_id]);
+//                $returnVal = $this->adkBidsystemService->GetAdvertiser($this->flexObject["advertiser_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -974,18 +974,18 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Advertiser
-//     * getAdvertiserGeo($advertiser_id [int])
+//     * getAdvertiserGeo($advertiser_id ["int"])
 //     *
 //     */
 //
 //    public function getAdvertiserGeo($advertiser_id = false){
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //    	$connection = $this->connect('Advertiser');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"]} ';
 //    	$node = 'Advertiser';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetAdvertiserGeo($this->flexObject[advertiser_id]);
+//                $returnVal = $this->adkBidsystemService->GetAdvertiserGeo($this->flexObject["advertiser_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1022,7 +1022,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Advertiser
-//     * getAdvertiserStats($advertiser_id [int],$start_date [string],$end_date [string])
+//     * getAdvertiserStats($advertiser_id ["int"],$start_date ["string"],$end_date ["string"])
 //     *
 //     */
 //
@@ -1031,11 +1031,11 @@ class ADK_SOAP_API
 //	$this->push('start_date',$start_date,'STRING');
 //	$this->push('end_date',$end_date,'STRING');
 //    	$connection = $this->connect('Advertiser');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[start_date],$this->flexObject[end_date]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["start_date"],$this->flexObject["end_date"]} ';
 //    	$node = 'Advertiser';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetAdvertiserStats($this->flexObject[advertiser_id],$this->flexObject[start_date],$this->flexObject[end_date]);
+//                $returnVal = $this->adkBidsystemService->GetAdvertiserStats($this->flexObject["advertiser_id"],$this->flexObject["start_date"],$this->flexObject["end_date"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1072,18 +1072,18 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Advertiser
-//     * getGeoStates($country_code [string])
+//     * getGeoStates($country_code ["string"])
 //     *
 //     */
 //
 //    public function getGeoStates($country_code = false){
 // 	$this->push('country_code',$country_code,'STRING');
 //    	$connection = $this->connect('Advertiser');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[country_code]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["country_code"]} ';
 //    	$node = 'Advertiser';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetGeoStates($this->flexObject[country_code]);
+//                $returnVal = $this->adkBidsystemService->GetGeoStates($this->flexObject["country_code"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1096,7 +1096,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Advertiser
-//     * setAdvertiserGeo($advertiser_id [int],$countries [ArrayOfGeoCountry])
+//     * setAdvertiserGeo($advertiser_id ["int"],$countries ["ArrayOfGeoCountry"])
 //     *
 //     */
 //
@@ -1104,11 +1104,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('countries',$countries,'ARRAYOFGEOCOUNTRY');
 //    	$connection = $this->connect('Advertiser');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[countries]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["countries"]} ';
 //    	$node = 'Advertiser';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->SetAdvertiserGeo($this->flexObject[advertiser_id],$this->flexObject[countries]);
+//                $returnVal = $this->adkBidsystemService->SetAdvertiserGeo($this->flexObject["advertiser_id"],$this->flexObject["countries"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1126,7 +1126,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: BidIndex
-//     * getBidIndex($advertiser_id [int],$ad_group_id [int],$category_id [int],$objective_id [int])
+//     * getBidIndex($advertiser_id ["int"],$ad_group_id ["int"],$category_id ["int"],$objective_id ["int"])
 //     *
 //     */
 //
@@ -1136,11 +1136,11 @@ class ADK_SOAP_API
 //	$this->push('category_id',$category_id,'INT');
 //	$this->push('objective_id',$objective_id,'INT');
 //    	$connection = $this->connect('BidIndex');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id],$this->flexObject[objective_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"],$this->flexObject["objective_id"]} ';
 //    	$node = 'BidIndex';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetBidIndex($this->flexObject[advertiser_id],$this->flexObject[ad_group_id],$this->flexObject[category_id],$this->flexObject[objective_id]);
+//                $returnVal = $this->adkBidsystemService->GetBidIndex($this->flexObject["advertiser_id"],$this->flexObject["ad_group_id"],$this->flexObject["category_id"],$this->flexObject["objective_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1158,7 +1158,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * createCampaign($advertiser_id [int],$campaign [Campaign])
+//     * createCampaign($advertiser_id ["int"],$campaign ["Campaign"])
 //     *
 //     */
 //
@@ -1166,11 +1166,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign',$campaign,'CAMPAIGN');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->CreateCampaign($this->flexObject[advertiser_id],$this->flexObject[campaign]);
+//                $returnVal = $this->adkBidsystemService->CreateCampaign($this->flexObject["advertiser_id"],$this->flexObject["campaign"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1183,7 +1183,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * createCampaignList($advertiser_id [int],$campaigns [ArrayOfCampaign])
+//     * createCampaignList($advertiser_id ["int"],$campaigns ["ArrayOfCampaign"])
 //     *
 //     */
 //
@@ -1191,11 +1191,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaigns',$campaigns,'ARRAYOFCAMPAIGN');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaigns]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaigns"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->CreateCampaignList($this->flexObject[advertiser_id],$this->flexObject[campaigns]);
+//                $returnVal = $this->adkBidsystemService->CreateCampaignList($this->flexObject["advertiser_id"],$this->flexObject["campaigns"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1208,7 +1208,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * disableCampaignDayParting($advertiser_id [int],$campaign_id [int])
+//     * disableCampaignDayParting($advertiser_id ["int"],$campaign_id ["int"])
 //     *
 //     */
 //
@@ -1216,11 +1216,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_id',$campaign_id,'INT');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->DisableCampaignDayParting($this->flexObject[advertiser_id],$this->flexObject[campaign_id]);
+//                $returnVal = $this->adkBidsystemService->DisableCampaignDayParting($this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1233,7 +1233,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * enableCampaignDayParting($advertiser_id [int],$campaign_id [int])
+//     * enableCampaignDayParting($advertiser_id ["int"],$campaign_id ["int"])
 //     *
 //     */
 //
@@ -1241,11 +1241,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_id',$campaign_id,'INT');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->EnableCampaignDayParting($this->flexObject[advertiser_id],$this->flexObject[campaign_id]);
+//                $returnVal = $this->adkBidsystemService->EnableCampaignDayParting($this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1258,7 +1258,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * getCampaignDayParting($advertiser_id [int],$campaign_id [int])
+//     * getCampaignDayParting($advertiser_id ["int"],$campaign_id ["int"])
 //     *
 //     */
 //
@@ -1266,11 +1266,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_id',$campaign_id,'INT');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetCampaignDayParting($this->flexObject[advertiser_id],$this->flexObject[campaign_id]);
+//                $returnVal = $this->adkBidsystemService->GetCampaignDayParting($this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1283,7 +1283,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * getCampaignGeo($advertiser_id [int],$campaign_id [int])
+//     * getCampaignGeo($advertiser_id ["int"],$campaign_id ["int"])
 //     *
 //     */
 //
@@ -1291,11 +1291,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_id',$campaign_id,'INT');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetCampaignGeo($this->flexObject[advertiser_id],$this->flexObject[campaign_id]);
+//                $returnVal = $this->adkBidsystemService->GetCampaignGeo($this->flexObject["advertiser_id"],$this->flexObject["campaign_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1308,18 +1308,18 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * getCampaignList($advertiser_id [int])
+//     * getCampaignList($advertiser_id ["int"])
 //     *
 //     */
 //
 //    public function getCampaignList($advertiser_id = false){
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetCampaignList($this->flexObject[advertiser_id]);
+//                $returnVal = $this->adkBidsystemService->GetCampaignList($this->flexObject["advertiser_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1332,7 +1332,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * getCampaignListDayParting($advertiser_id [int],$campaign_ids [ArrayOfInt])
+//     * getCampaignListDayParting($advertiser_id ["int"],$campaign_ids ["ArrayOfInt"])
 //     *
 //     */
 //
@@ -1340,11 +1340,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_ids',$campaign_ids,'ARRAYOFINT');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_ids]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_ids"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetCampaignListDayParting($this->flexObject[advertiser_id],$this->flexObject[campaign_ids]);
+//                $returnVal = $this->adkBidsystemService->GetCampaignListDayParting($this->flexObject["advertiser_id"],$this->flexObject["campaign_ids"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1357,7 +1357,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * setCampaignDayParting($advertiser_id [int],$day_parting [DayParting])
+//     * setCampaignDayParting($advertiser_id ["int"],$day_parting ["DayParting"])
 //     *
 //     */
 //
@@ -1365,11 +1365,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('day_parting',$day_parting,'DAYPARTING');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[day_parting]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["day_parting"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->SetCampaignDayParting($this->flexObject[advertiser_id],$this->flexObject[day_parting]);
+//                $returnVal = $this->adkBidsystemService->SetCampaignDayParting($this->flexObject["advertiser_id"],$this->flexObject["day_parting"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1382,7 +1382,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * setCampaignGeo($advertiser_id [int],$campaign_id [int],$countries [ArrayOfGeoCountry])
+//     * setCampaignGeo($advertiser_id ["int"],$campaign_id ["int"],$countries ["ArrayOfGeoCountry"])
 //     *
 //     */
 //
@@ -1391,11 +1391,11 @@ class ADK_SOAP_API
 //	$this->push('campaign_id',$campaign_id,'INT');
 //	$this->push('countries',$countries,'ARRAYOFGEOCOUNTRY');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_id],$this->flexObject[countries]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_id"],$this->flexObject["countries"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->SetCampaignGeo($this->flexObject[advertiser_id],$this->flexObject[campaign_id],$this->flexObject[countries]);
+//                $returnVal = $this->adkBidsystemService->SetCampaignGeo($this->flexObject["advertiser_id"],$this->flexObject["campaign_id"],$this->flexObject["countries"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1408,7 +1408,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * setCampaignListDayParting($advertiser_id [int],$day_partings [ArrayOfDayParting])
+//     * setCampaignListDayParting($advertiser_id ["int"],$day_partings ["ArrayOfDayParting"])
 //     *
 //     */
 //
@@ -1416,11 +1416,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('day_partings',$day_partings,'ARRAYOFDAYPARTING');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[day_partings]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["day_partings"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->SetCampaignListDayParting($this->flexObject[advertiser_id],$this->flexObject[day_partings]);
+//                $returnVal = $this->adkBidsystemService->SetCampaignListDayParting($this->flexObject["advertiser_id"],$this->flexObject["day_partings"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1433,7 +1433,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * updateCampaign($advertiser_id [int],$campaign [Campaign])
+//     * updateCampaign($advertiser_id ["int"],$campaign ["Campaign"])
 //     *
 //     */
 //
@@ -1441,11 +1441,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign',$campaign,'CAMPAIGN');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateCampaign($this->flexObject[advertiser_id],$this->flexObject[campaign]);
+//                $returnVal = $this->adkBidsystemService->UpdateCampaign($this->flexObject["advertiser_id"],$this->flexObject["campaign"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1458,7 +1458,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Campaign
-//     * updateCampaignList($advertiser_id [int],$campaigns [ArrayOfCampaign])
+//     * updateCampaignList($advertiser_id ["int"],$campaigns ["ArrayOfCampaign"])
 //     *
 //     */
 //
@@ -1466,11 +1466,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaigns',$campaigns,'ARRAYOFCAMPAIGN');
 //    	$connection = $this->connect('Campaign');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaigns]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaigns"]} ';
 //    	$node = 'Campaign';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateCampaignList($this->flexObject[advertiser_id],$this->flexObject[campaigns]);
+//                $returnVal = $this->adkBidsystemService->UpdateCampaignList($this->flexObject["advertiser_id"],$this->flexObject["campaigns"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1517,7 +1517,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * createListing($advertiser_id [int],$listing [Listing])
+//     * createListing($advertiser_id ["int"],$listing ["Listing"])
 //     *
 //     */
 //
@@ -1525,11 +1525,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('listing',$listing,'LISTING');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[listing]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["listing"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->CreateListing($this->flexObject[advertiser_id],$this->flexObject[listing]);
+//                $returnVal = $this->adkBidsystemService->CreateListing($this->flexObject["advertiser_id"],$this->flexObject["listing"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1542,7 +1542,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * createListingList($advertiser_id [int],$listings [ArrayOfListing])
+//     * createListingList($advertiser_id ["int"],$listings ["ArrayOfListing"])
 //     *
 //     */
 //
@@ -1550,11 +1550,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('listings',$listings,'ARRAYOFLISTING');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[listings]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["listings"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->CreateListingList($this->flexObject[advertiser_id],$this->flexObject[listings]);
+//                $returnVal = $this->adkBidsystemService->CreateListingList($this->flexObject["advertiser_id"],$this->flexObject["listings"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1567,7 +1567,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * getActiveListingsByAdGroup($advertiser_id [int],$ad_group_ids [ArrayOfInt])
+//     * getActiveListingsByAdGroup($advertiser_id ["int"],$ad_group_ids ["ArrayOfInt"])
 //     *
 //     */
 //
@@ -1575,11 +1575,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_group_ids',$ad_group_ids,'ARRAYOFINT');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_ids]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_ids"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetActiveListingsByAdGroup($this->flexObject[advertiser_id],$this->flexObject[ad_group_ids]);
+//                $returnVal = $this->adkBidsystemService->GetActiveListingsByAdGroup($this->flexObject["advertiser_id"],$this->flexObject["ad_group_ids"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1592,7 +1592,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * getActiveListingsByCampaign($advertiser_id [int],$campaign_ids [ArrayOfInt])
+//     * getActiveListingsByCampaign($advertiser_id ["int"],$campaign_ids ["ArrayOfInt"])
 //     *
 //     */
 //
@@ -1600,11 +1600,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_ids',$campaign_ids,'ARRAYOFINT');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_ids]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_ids"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetActiveListingsByCampaign($this->flexObject[advertiser_id],$this->flexObject[campaign_ids]);
+//                $returnVal = $this->adkBidsystemService->GetActiveListingsByCampaign($this->flexObject["advertiser_id"],$this->flexObject["campaign_ids"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1617,7 +1617,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * getListing($advertiser_id [int],$listing_id [int])
+//     * getListing($advertiser_id ["int"],$listing_id ["int"])
 //     *
 //     */
 //
@@ -1625,11 +1625,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('listing_id',$listing_id,'INT');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[listing_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["listing_id"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetListing($this->flexObject[advertiser_id],$this->flexObject[listing_id]);
+//                $returnVal = $this->adkBidsystemService->GetListing($this->flexObject["advertiser_id"],$this->flexObject["listing_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1642,7 +1642,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * getListingList($advertiser_id [int],$listing_ids [ArrayOfInt])
+//     * getListingList($advertiser_id ["int"],$listing_ids ["ArrayOfInt"])
 //     *
 //     */
 //
@@ -1650,11 +1650,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('listing_ids',$listing_ids,'ARRAYOFINT');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[listing_ids]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["listing_ids"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetListingList($this->flexObject[advertiser_id],$this->flexObject[listing_ids]);
+//                $returnVal = $this->adkBidsystemService->GetListingList($this->flexObject["advertiser_id"],$this->flexObject["listing_ids"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1667,7 +1667,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * getListingStats($advertiser_id [int],$listing_ids [ArrayOfInt],$start_date [string],$end_date [string])
+//     * getListingStats($advertiser_id ["int"],$listing_ids ["ArrayOfInt"],$start_date ["string"],$end_date ["string"])
 //     *
 //     */
 //
@@ -1677,11 +1677,11 @@ class ADK_SOAP_API
 //	$this->push('start_date',$start_date,'STRING');
 //	$this->push('end_date',$end_date,'STRING');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[listing_ids],$this->flexObject[start_date],$this->flexObject[end_date]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["listing_ids"],$this->flexObject["start_date"],$this->flexObject["end_date"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetListingStats($this->flexObject[advertiser_id],$this->flexObject[listing_ids],$this->flexObject[start_date],$this->flexObject[end_date]);
+//                $returnVal = $this->adkBidsystemService->GetListingStats($this->flexObject["advertiser_id"],$this->flexObject["listing_ids"],$this->flexObject["start_date"],$this->flexObject["end_date"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1694,7 +1694,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * getListingsByAdGroup($advertiser_id [int],$ad_group_ids [ArrayOfInt])
+//     * getListingsByAdGroup($advertiser_id ["int"],$ad_group_ids ["ArrayOfInt"])
 //     *
 //     */
 //
@@ -1702,11 +1702,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('ad_group_ids',$ad_group_ids,'ARRAYOFINT');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[ad_group_ids]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["ad_group_ids"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetListingsByAdGroup($this->flexObject[advertiser_id],$this->flexObject[ad_group_ids]);
+//                $returnVal = $this->adkBidsystemService->GetListingsByAdGroup($this->flexObject["advertiser_id"],$this->flexObject["ad_group_ids"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1719,7 +1719,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * getListingsByCampaign($advertiser_id [int],$campaign_ids [ArrayOfInt])
+//     * getListingsByCampaign($advertiser_id ["int"],$campaign_ids ["ArrayOfInt"])
 //     *
 //     */
 //
@@ -1727,11 +1727,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('campaign_ids',$campaign_ids,'ARRAYOFINT');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[campaign_ids]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["campaign_ids"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetListingsByCampaign($this->flexObject[advertiser_id],$this->flexObject[campaign_ids]);
+//                $returnVal = $this->adkBidsystemService->GetListingsByCampaign($this->flexObject["advertiser_id"],$this->flexObject["campaign_ids"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1744,7 +1744,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * updateListing($advertiser_id [int],$listing [Listing])
+//     * updateListing($advertiser_id ["int"],$listing ["Listing"])
 //     *
 //     */
 //
@@ -1752,11 +1752,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('listing',$listing,'LISTING');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[listing]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["listing"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateListing($this->flexObject[advertiser_id],$this->flexObject[listing]);
+//                $returnVal = $this->adkBidsystemService->UpdateListing($this->flexObject["advertiser_id"],$this->flexObject["listing"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1769,7 +1769,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Listing
-//     * updateListingList($advertiser_id [int],$listings [ArrayOfListing])
+//     * updateListingList($advertiser_id ["int"],$listings ["ArrayOfListing"])
 //     *
 //     */
 //
@@ -1777,11 +1777,11 @@ class ADK_SOAP_API
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //	$this->push('listings',$listings,'ARRAYOFLISTING');
 //    	$connection = $this->connect('Listing');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[listings]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["listings"]} ';
 //    	$node = 'Listing';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->UpdateListingList($this->flexObject[advertiser_id],$this->flexObject[listings]);
+//                $returnVal = $this->adkBidsystemService->UpdateListingList($this->flexObject["advertiser_id"],$this->flexObject["listings"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1799,18 +1799,18 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Network
-//     * getNetworkById($network_id [int])
+//     * getNetworkById($network_id ["int"])
 //     *
 //     */
 //
 //    public function getNetworkById($network_id = false){
 // 	$this->push('network_id',$network_id,'INT');
 //    	$connection = $this->connect('Network');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[network_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["network_id"]} ';
 //    	$node = 'Network';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetNetworkById($this->flexObject[network_id]);
+//                $returnVal = $this->adkBidsystemService->GetNetworkById($this->flexObject["network_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1823,18 +1823,18 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Network
-//     * getNetworkByName($network_name [string])
+//     * getNetworkByName($network_name ["string"])
 //     *
 //     */
 //
 //    public function getNetworkByName($network_name = false){
 // 	$this->push('network_name',$network_name,'STRING');
 //    	$connection = $this->connect('Network');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[network_name]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["network_name"]} ';
 //    	$node = 'Network';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetNetworkByName($this->flexObject[network_name]);
+//                $returnVal = $this->adkBidsystemService->GetNetworkByName($this->flexObject["network_name"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1847,7 +1847,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Network
-//     * getNetworkCategoryMinBid($network_id [int],$category_id [int])
+//     * getNetworkCategoryMinBid($network_id ["int"],$category_id ["int"])
 //     *
 //     */
 //
@@ -1855,11 +1855,11 @@ class ADK_SOAP_API
 // 	$this->push('network_id',$network_id,'INT');
 //	$this->push('category_id',$category_id,'INT');
 //    	$connection = $this->connect('Network');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[network_id],$this->flexObject[category_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["network_id"],$this->flexObject["category_id"]} ';
 //    	$node = 'Network';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetNetworkCategoryMinBid($this->flexObject[network_id],$this->flexObject[category_id]);
+//                $returnVal = $this->adkBidsystemService->GetNetworkCategoryMinBid($this->flexObject["network_id"],$this->flexObject["category_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1901,18 +1901,18 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Transaction
-//     * getLastTransaction($advertiser_id [int])
+//     * getLastTransaction($advertiser_id ["int"])
 //     *
 //     */
 //
 //    public function getLastTransaction($advertiser_id = false){
 // 	$this->push('advertiser_id',$advertiser_id,'INT');
 //    	$connection = $this->connect('Transaction');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"]} ';
 //    	$node = 'Transaction';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetLastTransaction($this->flexObject[advertiser_id]);
+//                $returnVal = $this->adkBidsystemService->GetLastTransaction($this->flexObject["advertiser_id"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
@@ -1925,7 +1925,7 @@ class ADK_SOAP_API
 //    /*
 //     * Auto-Generated Code: USE AT YOUR OWN RISK!
 //     * Service: Transaction
-//     * getTransactionHistory($advertiser_id [int],$start_date [string],$end_date [string])
+//     * getTransactionHistory($advertiser_id ["int"],$start_date ["string"],$end_date ["string"])
 //     *
 //     */
 //
@@ -1934,11 +1934,11 @@ class ADK_SOAP_API
 //	$this->push('start_date',$start_date,'STRING');
 //	$this->push('end_date',$end_date,'STRING');
 //    	$connection = $this->connect('Transaction');
-//    	$error = 'Error Selecting Campaign {$this->flexObject[advertiser_id],$this->flexObject[start_date],$this->flexObject[end_date]} ';
+//    	$error = 'Error Selecting Campaign {$this->flexObject["advertiser_id"],$this->flexObject["start_date"],$this->flexObject["end_date"]} ';
 //    	$node = 'Transaction';
 //    	$shiftNode = false;
 //        try {
-//                $returnVal = $this->adkBidsystemService->GetTransactionHistory($this->flexObject[advertiser_id],$this->flexObject[start_date],$this->flexObject[end_date]);
+//                $returnVal = $this->adkBidsystemService->GetTransactionHistory($this->flexObject["advertiser_id"],$this->flexObject["start_date"],$this->flexObject["end_date"]);
 //                return $this->processReturn($returnVal, $error, __FUNCTION__, $node, $shiftNode);
 //            } catch (Exception $e) {
 //                return array('status' => 'error', 'line' => __LINE__, 'message' => $e->getMessage());
